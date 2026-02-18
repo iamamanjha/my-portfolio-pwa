@@ -1,10 +1,10 @@
 {
-  "name": "My Portfolio",
-  "short_name": "Portfolio",
+  "name": "Aman Jha Portfolio",
+  "short_name": "Aman Jha",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#0a0f1d",
+  "theme_color": "#0a0f1d",
   "icons": [
     {
       "src": "icon.png",

@@ -1,8 +1,9 @@
-const cacheName = 'portfolio-v1';
+const cacheName = 'portfolio-liquid-v2';
 const assets = [
   './',
   './index.html',
-  './icon.png'
+  './icon.png',
+  './profile.png'
 ];
 
 // Install event: Caches the files
