@@ -7,72 +7,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aman Jha - Student Portfolio</title>
   <meta name="description" content="Personal portfolio of Aman Jha, an AI&DS Engineering student." />
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
 
   <style>
+    /* ───────────────────────────────────────────────
+       DESIGN TOKENS – Multi-Color M3 + Glass Hybrid
+    ─────────────────────────────────────────────── */
     :root {
-      /* Liquid Glass Theme Colors */
-      --bg-dark: #0a0f1d;
-      --text: #e5e7eb;
-      /* gray-200 */
-      --muted: #a3a3a3;
-      /* gray-400 */
-      --primary: #60a5fa;
-      /* blue-400 */
-      --accent: #c084fc;
-      /* purple-400 */
-      --accent-secondary: #2dd4bf;
-      /* teal-400 */
+      /* Accent Palette */
+      --blue: #A8C7FA;
+      --blue-c: #004494;
+      --purple: #D0BCFF;
+      --purple-c: #381E72;
+      --teal: #80CBC4;
+      --teal-c: #00504C;
+      --rose: #F48FB1;
+      --rose-c: #7B1FA2;
+      --amber: #FFD54F;
 
-      /* Glass Specific Variables */
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --glass-blur: 24px;
-      --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      --glass-highlight: rgba(255, 255, 255, 0.2);
+      /* Surfaces */
+      --surface: #0d1117;
+      --surface-1: rgba(255, 255, 255, 0.04);
+      --surface-2: rgba(255, 255, 255, 0.07);
+      --surface-3: rgba(255, 255, 255, 0.10);
+      --surface-border: rgba(255, 255, 255, 0.10);
+      --on-surface: #E2E2EA;
+      --on-surface-var: #9AA3B2;
+
+      /* Glass params */
+      --glass-blur: 18px;
+      --glass-sat: 150%;
+
+      /* Shapes */
+      --r-sm: 10px;
+      --r-md: 16px;
+      --r-lg: 24px;
+      --r-xl: 32px;
+      --r-full: 9999px;
+
+      /* Shadows */
+      --sh1: 0 2px 8px rgba(0, 0, 0, .45);
+      --sh2: 0 4px 20px rgba(0, 0, 0, .55);
+      --sh3: 0 8px 40px rgba(0, 0, 0, .6);
+
+      /* Animation */
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+      --dur: 0.28s;
 
       --maxw: 1080px;
-      --radius: 24px;
-      /* More rounded for liquid feel */
     }
 
-    /* Reset & base */
+    /* ───────────────────────────────────────────────
+       RESET & BASE
+    ─────────────────────────────────────────────── */
     *,
     *::before,
     *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html,
-    body {
-      height: 100%;
+    html {
       scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      color: var(--text);
-      /* Complex background mesh gradient for liquid effect */
-      background-color: var(--bg-dark);
+      background: var(--surface);
+      /* Rich multi-color mesh gradient background */
       background-image:
-        radial-gradient(at 80% 0%, hsla(196, 82%, 56%, 0.3) 0px, transparent 50%),
-        radial-gradient(at 0% 50%, hsla(267, 85%, 61%, 0.3) 0px, transparent 50%),
-        radial-gradient(at 80% 100%, hsla(169, 78%, 52%, 0.2) 0px, transparent 50%),
-        radial-gradient(at 0% 0%, hsla(267, 85%, 61%, 0.2) 0px, transparent 50%);
+        radial-gradient(ellipse 70% 50% at 15% 10%, rgba(168, 199, 250, .18) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 85% 20%, rgba(208, 188, 255, .16) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 50% 80%, rgba(128, 203, 196, .14) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 40% at 92% 75%, rgba(244, 143, 177, .12) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 5% 70%, rgba(255, 213, 79, .10) 0%, transparent 50%);
       background-attachment: fixed;
-      /* Keeps gradient bright while scrolling */
-      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+      color: var(--on-surface);
+      font-family: 'Roboto', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
 
     a {
-      color: var(--primary);
+      color: var(--blue);
       text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    a:hover {
-      color: var(--accent);
     }
 
     img {
@@ -80,21 +106,9 @@
       display: block;
     }
 
-    /* The Glass Utility Class - The core of the new design */
-    .glass {
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur)) saturate(110%);
-      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(110%);
-      border: 1px solid var(--glass-border);
-      border-top: 1px solid var(--glass-highlight);
-      /* Top highlight */
-      border-left: 1px solid var(--glass-highlight);
-      /* Left highlight */
-      box-shadow: var(--glass-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius);
-    }
-
-    /* Layout */
+    /* ───────────────────────────────────────────────
+       LAYOUT
+    ─────────────────────────────────────────────── */
     .container {
       max-width: var(--maxw);
       margin: 0 auto;
@@ -102,82 +116,298 @@
     }
 
     .content {
-      padding: 3.5rem 0;
+      padding: 2rem 0 5rem;
     }
 
-    /* Header - Glass Header */
+    /* ───────────────────────────────────────────────
+       GLASS UTILITY
+    ─────────────────────────────────────────────── */
+    .glass {
+      background: var(--surface-1);
+      backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+      border: 1px solid var(--surface-border);
+      border-top-color: rgba(255, 255, 255, 0.18);
+      border-left-color: rgba(255, 255, 255, 0.14);
+    }
+
+    /* ───────────────────────────────────────────────
+       TOP APP BAR
+    ─────────────────────────────────────────────── */
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(10, 15, 29, 0.7);
-      /* Slightly darker glass for header */
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--glass-border);
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.55);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid var(--surface-border);
+      transition: box-shadow var(--dur) var(--ease-smooth);
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, .5);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 70px;
+      height: 64px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--r-full);
+      overflow: hidden;
+      border: 2px solid var(--blue);
+      box-shadow: 0 0 12px rgba(168, 199, 250, .4);
+      transition: box-shadow var(--dur) var(--ease-smooth), transform var(--dur) var(--ease-bounce);
+      flex-shrink: 0;
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.12) rotate(4deg);
+      box-shadow: 0 0 22px rgba(208, 188, 255, .6);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--r-full);
+    }
+
+    .brand-name {
+      font-family: 'Google Sans', sans-serif;
       font-size: 1.1rem;
-    }
-
-    .brand .logo-glow {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: 0 0 20px var(--accent);
-      position: relative;
-    }
-
-    .brand .logo-glow::after {
-      content: '';
-      position: absolute;
-      inset: 2px;
-      background: var(--bg-dark);
-      border-radius: 50%;
+      font-weight: 500;
+      color: var(--on-surface);
+      letter-spacing: 0.1px;
     }
 
     .nav-links {
       display: flex;
-      gap: 0.5rem;
+      gap: 4px;
       align-items: center;
     }
 
     .nav-links a {
-      color: var(--text);
-      padding: 0.6rem 1rem;
-      border-radius: 12px;
+      color: var(--on-surface-var);
+      font-size: 0.875rem;
       font-weight: 500;
-      transition: all 0.3s ease;
+      padding: 0.45rem 1rem;
+      border-radius: var(--r-full);
+      letter-spacing: 0.2px;
+      transition: color var(--dur), background var(--dur), transform var(--dur) var(--ease-bounce);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 20px;
+      height: 2px;
+      border-radius: var(--r-full);
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      transition: transform var(--dur) var(--ease-bounce);
     }
 
     .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: var(--on-surface);
+      background: var(--surface-2);
+      transform: translateY(-2px);
     }
 
-    /* Hero Section */
+    .nav-links a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    /* ───────────────────────────────────────────────
+       SCROLL REVEAL SETUP
+    ─────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 0.6s var(--ease-smooth), transform 0.65s var(--ease-bounce);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children */
+    .reveal-stagger>* {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.5s var(--ease-smooth), transform 0.55s var(--ease-bounce);
+    }
+
+    .reveal-stagger.visible>*:nth-child(1) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.05s;
+    }
+
+    .reveal-stagger.visible>*:nth-child(2) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.15s;
+    }
+
+    .reveal-stagger.visible>*:nth-child(3) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.25s;
+    }
+
+    .reveal-stagger.visible>*:nth-child(4) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.35s;
+    }
+
+    .reveal-stagger.visible>*:nth-child(5) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.45s;
+    }
+
+    .reveal-stagger.visible>*:nth-child(6) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.55s;
+    }
+
+    .reveal-stagger.visible>*:nth-child(n+7) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.65s;
+    }
+
+    /* ───────────────────────────────────────────────
+       CARDS — Glass + Colored glow on hover
+    ─────────────────────────────────────────────── */
+    .card {
+      border-radius: var(--r-xl);
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform var(--dur) var(--ease-bounce),
+        box-shadow var(--dur) var(--ease-smooth),
+        border-color var(--dur);
+    }
+
+    /* Shimmer overlay (moves on hover via JS-free trick) */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+          rgba(255, 255, 255, 0.06) 0%,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(255, 255, 255, 0.03) 100%);
+      border-radius: inherit;
+      pointer-events: none;
+      transition: opacity var(--dur);
+      opacity: 0;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.012);
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, .6),
+        0 0 0 1px rgba(255, 255, 255, 0.12);
+    }
+
+    /* Color-coded glow on hover per card */
+    .card-blue:hover {
+      box-shadow: 0 12px 40px rgba(168, 199, 250, .2), 0 0 0 1px rgba(168, 199, 250, .25);
+    }
+
+    .card-purple:hover {
+      box-shadow: 0 12px 40px rgba(208, 188, 255, .2), 0 0 0 1px rgba(208, 188, 255, .25);
+    }
+
+    .card-teal:hover {
+      box-shadow: 0 12px 40px rgba(128, 203, 196, .2), 0 0 0 1px rgba(128, 203, 196, .25);
+    }
+
+    .card-rose:hover {
+      box-shadow: 0 12px 40px rgba(244, 143, 177, .2), 0 0 0 1px rgba(244, 143, 177, .25);
+    }
+
+    /* Top accent bar */
+    .card-blue::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      border-radius: var(--r-xl) var(--r-xl) 0 0;
+    }
+
+    .card-purple::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--rose));
+      border-radius: var(--r-xl) var(--r-xl) 0 0;
+    }
+
+    .card-teal::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      border-radius: var(--r-xl) var(--r-xl) 0 0;
+    }
+
+    .card-rose::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--amber));
+      border-radius: var(--r-xl) var(--r-xl) 0 0;
+    }
+
+    /* ───────────────────────────────────────────────
+       HERO
+    ─────────────────────────────────────────────── */
     .hero {
       display: grid;
-      gap: 2.5rem;
-      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.75rem;
+      grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
+      padding: 3rem 0 2rem;
     }
 
-    /* Applying glass class to hero elements */
     .hero-card {
       padding: 2.5rem;
     }
@@ -187,39 +417,161 @@
       text-align: center;
     }
 
+    /* ───────────────────────────────────────────────
+       TYPOGRAPHY
+    ─────────────────────────────────────────────── */
     .kicker {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
+      gap: 0.4rem;
+      color: var(--blue);
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 1.4px;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
     }
 
     .hero h1 {
-      margin: 0 0 1rem;
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.1;
-      font-weight: 800;
-      /* Gradient Text */
-      background: linear-gradient(to right, var(--text), var(--primary));
+      font-family: 'Google Sans', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.9rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      /* Multi-color gradient text */
+      background: linear-gradient(135deg, var(--on-surface) 0%, var(--blue) 50%, var(--purple) 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      color: var(--muted);
-      margin: 0 0 2rem;
-      font-size: 1.1rem;
+      color: var(--on-surface-var);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
-    /* Glass Buttons */
+    /* Section headers */
+    .section-head {
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .section-head h3 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--on-surface);
+    }
+
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 12px;
+      border-radius: var(--r-full);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .pill-blue {
+      background: rgba(168, 199, 250, .15);
+      color: var(--blue);
+      border: 1px solid rgba(168, 199, 250, .3);
+    }
+
+    .pill-purple {
+      background: rgba(208, 188, 255, .15);
+      color: var(--purple);
+      border: 1px solid rgba(208, 188, 255, .3);
+    }
+
+    .pill-teal {
+      background: rgba(128, 203, 196, .15);
+      color: var(--teal);
+      border: 1px solid rgba(128, 203, 196, .3);
+    }
+
+    .pill-rose {
+      background: rgba(244, 143, 177, .15);
+      color: var(--rose);
+      border: 1px solid rgba(244, 143, 177, .3);
+    }
+
+    /* Identity card text */
+    .identity h2 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--on-surface);
+      margin: 0.75rem 0 0.3rem;
+    }
+
+    .identity .meta {
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ───────────────────────────────────────────────
+       AVATAR
+    ─────────────────────────────────────────────── */
+    .avatar-wrap {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 1.25rem;
+    }
+
+    /* Spinning gradient ring */
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: var(--r-full);
+      background: conic-gradient(var(--blue), var(--purple), var(--teal), var(--rose), var(--blue));
+      animation: spin 6s linear infinite;
+      z-index: 0;
+    }
+
+    .avatar-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--r-full);
+      background: var(--surface);
+      z-index: 1;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .avatar {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--r-full);
+      object-fit: cover;
+    }
+
+    /* ───────────────────────────────────────────────
+       BUTTONS — M3 with glow on hover
+    ─────────────────────────────────────────────── */
     .cta-row {
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
     }
 
@@ -227,246 +579,414 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.8rem 1.5rem;
-      border-radius: 16px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      gap: 8px;
+      padding: 0 1.5rem;
+      height: 42px;
+      border-radius: var(--r-full);
+      font-family: 'Google Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.15px;
       cursor: pointer;
-      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      transition:
+        transform var(--dur) var(--ease-bounce),
+        box-shadow var(--dur) var(--ease-smooth),
+        background var(--dur);
+    }
+
+    /* Ripple surface */
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: background var(--dur);
+    }
+
+    .btn:hover::before {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.97);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(192, 132, 252, 0.3));
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, var(--blue-c), #5b4fcf);
       color: #fff;
-      box-shadow: 0 8px 20px -4px rgba(96, 165, 250, 0.4);
+      box-shadow: 0 4px 16px rgba(168, 199, 250, .25);
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px -4px rgba(192, 132, 252, 0.5);
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.5), rgba(192, 132, 252, 0.5));
+      box-shadow: 0 8px 28px rgba(168, 199, 250, .45), 0 0 20px rgba(208, 188, 255, .3);
     }
 
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text);
+    .btn-outlined {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--blue);
+      border: 1px solid rgba(168, 199, 250, .35);
+      backdrop-filter: blur(8px);
     }
 
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-3px);
+    .btn-outlined:hover {
+      border-color: var(--blue);
+      color: var(--on-surface);
+      box-shadow: 0 0 16px rgba(168, 199, 250, .2);
+      background: rgba(168, 199, 250, .08);
     }
 
-    /* Identity Card & Photo */
-    .avatar-container {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 1.5rem;
-    }
-
-    /* Glowing ring behind avatar */
-    .avatar-container::before {
-      content: '';
-      position: absolute;
-      inset: -10px;
-      border-radius: 50%;
-      background: linear-gradient(to bottom right, var(--primary), var(--accent));
-      filter: blur(20px);
-      opacity: 0.5;
-      z-index: -1;
-    }
-
-    .avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .identity h2 {
-      margin: 0.5rem 0 0.25rem;
-      font-size: 1.5rem;
-    }
-
-    .identity .meta {
-      color: var(--accent-secondary);
-      font-weight: 500;
-    }
-
-    /* Sections Header */
+    /* ───────────────────────────────────────────────
+       SECTIONS
+    ─────────────────────────────────────────────── */
     section {
       margin-top: 4rem;
     }
 
-    .section-head {
-      margin-bottom: 1.5rem;
+    .about-card {
+      padding: 1.75rem;
     }
 
-    .section-head h3 {
-      margin: 0;
-      font-size: 1.8rem;
-      display: inline-block;
-      background: linear-gradient(to right, var(--primary), var(--accent-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .about-card p {
+      color: var(--on-surface-var);
+      line-height: 1.75;
     }
 
-    /* Cards & Grids (Glass Style) */
+    /* ───────────────────────────────────────────────
+       PROJECT CARDS
+    ─────────────────────────────────────────────── */
     .grid {
       display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.1rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
-    .card {
-      padding: 1.5rem;
-      transition: all 0.3s ease;
+    .project-card {
+      padding: 1.5rem 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
-    .card:hover {
-      transform: translateY(-5px) scale(1.02);
-      border-color: var(--accent);
-      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.05);
+    .project-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-bottom: 0.25rem;
+      transition: transform var(--dur) var(--ease-bounce);
     }
 
-    .card h4 {
-      margin: 0 0 0.75rem;
-      font-size: 1.2rem;
-      color: #fff;
+    .card:hover .project-icon {
+      transform: scale(1.15) rotate(-4deg);
     }
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
+    .icon-blue {
+      background: rgba(168, 199, 250, .15);
     }
 
-    /* Skills Chips (Glass Style) */
+    .icon-blue svg {
+      stroke: var(--blue);
+    }
+
+    .icon-purple {
+      background: rgba(208, 188, 255, .15);
+    }
+
+    .icon-purple svg {
+      stroke: var(--purple);
+    }
+
+    .icon-teal {
+      background: rgba(128, 203, 196, .15);
+    }
+
+    .icon-teal svg {
+      stroke: var(--teal);
+    }
+
+    .project-card h4 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--on-surface);
+    }
+
+    .project-card p {
+      color: var(--on-surface-var);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* ───────────────────────────────────────────────
+       SKILL CHIPS
+    ─────────────────────────────────────────────── */
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 0.6rem;
     }
 
     .chip {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 0.6rem 1rem;
+      gap: 7px;
+      height: 34px;
+      padding: 0 14px;
+      border-radius: var(--r-sm);
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(8px);
+      color: var(--on-surface-var);
+      font-size: 0.8125rem;
       font-weight: 500;
-      transition: all 0.2s ease;
+      cursor: default;
+      transition:
+        transform var(--dur) var(--ease-bounce),
+        border-color var(--dur),
+        background var(--dur),
+        color var(--dur),
+        box-shadow var(--dur);
     }
 
     .chip:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: var(--primary);
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.05);
+      background: rgba(255, 255, 255, .1);
+      color: var(--on-surface);
+    }
+
+    /* Colored chip variants */
+    .chip-blue:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 14px rgba(168, 199, 250, .25);
+    }
+
+    .chip-purple:hover {
+      border-color: var(--purple);
+      box-shadow: 0 4px 14px rgba(208, 188, 255, .25);
+    }
+
+    .chip-teal:hover {
+      border-color: var(--teal);
+      box-shadow: 0 4px 14px rgba(128, 203, 196, .25);
+    }
+
+    .chip-rose:hover {
+      border-color: var(--rose);
+      box-shadow: 0 4px 14px rgba(244, 143, 177, .25);
+    }
+
+    .chip-amber:hover {
+      border-color: var(--amber);
+      box-shadow: 0 4px 14px rgba(255, 213, 79, .25);
     }
 
     .chip .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--primary));
-      box-shadow: 0 0 8px var(--accent);
+      width: 7px;
+      height: 7px;
+      border-radius: var(--r-full);
+      flex-shrink: 0;
     }
 
-    /* Timeline */
+    .dot-blue {
+      background: var(--blue);
+    }
+
+    .dot-purple {
+      background: var(--purple);
+    }
+
+    .dot-teal {
+      background: var(--teal);
+    }
+
+    .dot-rose {
+      background: var(--rose);
+    }
+
+    .dot-amber {
+      background: var(--amber);
+    }
+
+    /* ───────────────────────────────────────────────
+       TIMELINE — Education
+    ─────────────────────────────────────────────── */
     .timeline {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 2.5rem;
     }
 
     .timeline::before {
-      content: "";
+      content: '';
       position: absolute;
-      top: 5px;
-      left: 7px;
+      top: 8px;
+      left: 11px;
       width: 2px;
-      height: 95%;
-      background: linear-gradient(to bottom, var(--primary), var(--accent-secondary), transparent);
+      height: calc(100% - 16px);
+      background: linear-gradient(to bottom, var(--blue), var(--purple), var(--teal), transparent);
+      border-radius: var(--r-full);
     }
 
     .timeline-item {
       position: relative;
-      margin: 1.5rem 0;
+      margin-bottom: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--r-lg);
+      transition: transform var(--dur) var(--ease-bounce), box-shadow var(--dur);
     }
 
+    .timeline-item:hover {
+      transform: translateX(6px);
+      box-shadow: var(--sh2);
+    }
+
+    /* Colored dot per item */
     .timeline-item::before {
-      content: "";
+      content: '';
       position: absolute;
-      left: -2.05rem;
-      top: 0.3rem;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--bg-dark);
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 15px var(--accent);
+      left: -2.12rem;
+      top: 1.3rem;
+      width: 14px;
+      height: 14px;
+      border-radius: var(--r-full);
+      border: 3px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--blue);
+      background: var(--blue);
+      transition: transform var(--dur) var(--ease-bounce), box-shadow var(--dur);
+    }
+
+    .timeline-item:nth-child(2)::before {
+      background: var(--purple);
+      box-shadow: 0 0 0 2px var(--purple);
+    }
+
+    .timeline-item:hover::before {
+      transform: scale(1.3);
     }
 
     .timeline-item h4 {
-      margin: 0 0 0.25rem;
-      font-size: 1.1rem;
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--on-surface);
+      margin-bottom: 0.2rem;
     }
 
-    /* Footer */
+    .timeline-item .meta {
+      font-size: 0.875rem;
+      color: var(--on-surface-var);
+    }
+
+    /* ───────────────────────────────────────────────
+       CONTACT
+    ─────────────────────────────────────────────── */
+    .contact-card {
+      text-align: center;
+      padding: 3.5rem 2rem;
+    }
+
+    .contact-card h3 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--on-surface);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-card p {
+      color: var(--on-surface-var);
+      margin-bottom: 2rem;
+    }
+
+    /* ───────────────────────────────────────────────
+       FOOTER
+    ─────────────────────────────────────────────── */
     footer {
       margin-top: 5rem;
-      padding: 3rem 0;
-      border-top: 1px solid var(--glass-border);
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, .08);
       text-align: center;
     }
 
     .socials {
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
       justify-content: center;
-      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
     }
 
     .social-link {
-      width: 45px;
-      height: 45px;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text);
-      transition: all 0.3s ease;
+      border-radius: var(--r-full);
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(8px);
+      color: var(--on-surface-var);
+      transition:
+        transform var(--dur) var(--ease-bounce),
+        color var(--dur),
+        border-color var(--dur),
+        background var(--dur),
+        box-shadow var(--dur);
     }
 
-    .social-link:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: var(--bg-dark);
-      transform: translateY(-3px) rotate(5deg);
-      box-shadow: 0 5px 15px rgba(96, 165, 250, 0.4);
+    .social-link:nth-child(1):hover {
+      color: var(--on-surface);
+      border-color: var(--blue);
+      background: rgba(168, 199, 250, .12);
+      box-shadow: 0 0 16px rgba(168, 199, 250, .3);
+      transform: translateY(-5px) scale(1.1);
     }
 
-    /* Responsive */
-    @media (max-width: 960px) {
+    .social-link:nth-child(2):hover {
+      color: var(--on-surface);
+      border-color: var(--purple);
+      background: rgba(208, 188, 255, .12);
+      box-shadow: 0 0 16px rgba(208, 188, 255, .3);
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    .social-link:nth-child(3):hover {
+      color: var(--on-surface);
+      border-color: var(--teal);
+      background: rgba(128, 203, 196, .12);
+      box-shadow: 0 0 16px rgba(128, 203, 196, .3);
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    .footer-caption {
+      color: var(--on-surface-var);
+      font-size: 0.875rem;
+    }
+
+    /* ───────────────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
       .hero {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 2rem 0;
       }
 
       .hero-identity {
         order: -1;
       }
 
-      /* Photo on top on mobile */
       .cta-row {
         justify-content: center;
       }
@@ -475,17 +995,43 @@
         display: none;
       }
     }
+
+    /* ───────────────────────────────────────────────
+       CURSOR GLOW FOLLOWER
+    ─────────────────────────────────────────────── */
+    #cursor-glow {
+      pointer-events: none;
+      position: fixed;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+          rgba(168, 199, 250, .08) 0%,
+          rgba(208, 188, 255, .04) 40%,
+          transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: left 0.12s ease, top 0.12s ease;
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
   </style>
 </head>
 
 <body>
-  <header>
+
+  <!-- Cursor glow -->
+  <div id="cursor-glow"></div>
+
+  <!-- M3 Top App Bar -->
+  <header id="site-header">
     <div class="container nav">
       <div class="brand">
-        <div class="logo-glow"></div>
-        <span>Aman Jha</span>
+        <div class="brand-logo">
+          <img src="icon.png" alt="Logo">
+        </div>
+        <span class="brand-name">Aman Jha</span>
       </div>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
@@ -495,153 +1041,223 @@
   </header>
 
   <main class="container content">
-    <section class="hero">
-      <div class="hero-card glass">
-        <span class="kicker">Hello, I’m</span>
+
+    <!-- ── HERO ─────────────────────────────────── -->
+    <section class="hero" aria-label="Introduction">
+
+      <div class="hero-card card glass card-blue reveal">
+        <span class="kicker">Hello, I'm</span>
         <h1>Aman Jha</h1>
         <p>
-          AI & Data Science Student based in Pune, India. I enjoy building intelligent systems,
+          AI &amp; Data Science Student based in Pune, India. I enjoy building intelligent systems,
           analyzing data patterns, and developing web solutions. This portfolio highlights my technical journey.
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#projects">View projects</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          <a class="btn btn-outlined" href="#contact">Get in touch</a>
         </div>
       </div>
 
-      <aside class="hero-identity glass">
-        <div class="avatar-container">
+      <aside class="hero-identity card glass card-purple reveal" style="transition-delay:0.1s">
+        <div class="avatar-wrap">
           <img src="profile.png" alt="Aman Jha Profile Photo" class="avatar">
         </div>
         <div class="identity">
           <h2>Aman Jha</h2>
-          <p class="meta">Undergraduate • AI&DS • Class of 2026</p>
+          <p class="meta">Undergraduate &bull; AI&amp;DS &bull; Class of 2026</p>
         </div>
       </aside>
     </section>
 
-    <section id="about">
-      <div class="section-head">
-        <h3>About</h3>
+    <!-- ── ABOUT ──────────────────────────────── -->
+    <section id="about" aria-label="About me">
+      <div class="section-head reveal">
+        <div class="section-pill pill-blue">About</div>
+        <h3>A bit about me</h3>
       </div>
-      <div class="card glass">
+      <div class="card glass card-teal about-card reveal">
         <p>
-          I’m a student focused on Artificial Intelligence and Data Science. I am passionate about
+          I'm a student focused on Artificial Intelligence and Data Science. I am passionate about
           solving complex problems through code, leveraging Python for data analysis, and exploring
-          Neural Networks. I am also proficient in Front-end technologies to visualize my models.
+          Neural Networks. I am also proficient in front-end technologies to visualise my models.
         </p>
       </div>
     </section>
 
-    <section id="projects">
-      <div class="section-head">
-        <h3>Projects</h3>
+    <!-- ── PROJECTS ───────────────────────────── -->
+    <section id="projects" aria-label="Projects">
+      <div class="section-head reveal">
+        <div class="section-pill pill-purple">Projects</div>
+        <h3>Things I've built</h3>
       </div>
+      <div class="grid reveal-stagger">
 
-      <div class="grid">
-        <article class="card glass">
+        <article class="card glass card-blue project-card">
+          <div class="project-icon icon-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
           <h4>IoT Based Smart Meter</h4>
           <p>A hardware-software integration project that monitors energy usage in real-time and transmits data
             wirelessly for remote tracking and analysis, enabling smarter energy consumption.</p>
         </article>
 
-        <article class="card glass">
+        <article class="card glass card-purple project-card">
+          <div class="project-icon icon-purple">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
           <h4>Simple Regression Model</h4>
-          <p>A foundational machine learning project implementing linear regression algorithms to predict continuous
-            numerical outcomes based on input datasets, demonstrating core predictive modeling concepts.</p>
+          <p>A foundational machine learning project implementing linear regression to predict continuous
+            numerical outcomes from input datasets, demonstrating core predictive modelling concepts.</p>
         </article>
 
-        <article class="card glass">
-          <h4>Smart Medical Inventory System</h4>
-          <p>A digital management system designed for medical facilities to track stock levels, manage expiry dates, and
-            automate reordering processes to ensure efficient pharmaceutical supply chain management.</p>
+        <article class="card glass card-teal project-card">
+          <div class="project-icon icon-teal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h4>Smart Medical Inventory</h4>
+          <p>A digital management system for medical facilities to track stock levels, manage expiry dates, and
+            automate reordering — ensuring efficient pharmaceutical supply chain management.</p>
         </article>
+
       </div>
     </section>
 
-    <section id="skills">
-      <div class="section-head">
-        <h3>Skills</h3>
+    <!-- ── SKILLS ─────────────────────────────── -->
+    <section id="skills" aria-label="Skills">
+      <div class="section-head reveal">
+        <div class="section-pill pill-teal">Skills</div>
+        <h3>My toolkit</h3>
       </div>
-      <div class="skills">
-        <span class="chip"><span class="dot"></span>Python</span>
-        <span class="chip"><span class="dot"></span>Data Structures</span>
-        <span class="chip"><span class="dot"></span>C++</span>
-        <span class="chip"><span class="dot"></span>Machine Learning</span>
-        <span class="chip"><span class="dot"></span>SQL</span>
-        <span class="chip"><span class="dot"></span>HTML5 & CSS3</span>
-        <span class="chip"><span class="dot"></span>JavaScript</span>
-        <span class="chip"><span class="dot"></span>Git & GitHub</span>
+      <div class="skills reveal-stagger">
+        <span class="chip chip-blue"> <span class="dot dot-blue"></span>Python</span>
+        <span class="chip chip-purple"><span class="dot dot-purple"></span>Data Structures</span>
+        <span class="chip chip-teal"> <span class="dot dot-teal"></span>C++</span>
+        <span class="chip chip-rose"> <span class="dot dot-rose"></span>Machine Learning</span>
+        <span class="chip chip-amber"> <span class="dot dot-amber"></span>SQL</span>
+        <span class="chip chip-blue"> <span class="dot dot-blue"></span>HTML5 &amp; CSS3</span>
+        <span class="chip chip-purple"><span class="dot dot-purple"></span>JavaScript</span>
+        <span class="chip chip-teal"> <span class="dot dot-teal"></span>Git &amp; GitHub</span>
       </div>
     </section>
 
-    <section id="education">
-      <div class="section-head">
-        <h3>Education</h3>
+    <!-- ── EDUCATION ──────────────────────────── -->
+    <section id="education" aria-label="Education">
+      <div class="section-head reveal">
+        <div class="section-pill pill-rose">Education</div>
+        <h3>My academic path</h3>
       </div>
       <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item glass reveal">
           <h4>Zeal College Of Engineering</h4>
-          <p class="meta">B.E. in Artificial Intelligence & Data Science (AI&DS)</p>
+          <p class="meta">B.E. in Artificial Intelligence &amp; Data Science (AI&amp;DS)</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item glass reveal" style="transition-delay:0.12s">
           <h4>Don Bosco High School</h4>
           <p class="meta">Secondary Education</p>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <div class="card glass" style="text-align: center;">
+    <!-- ── CONTACT ────────────────────────────── -->
+    <section id="contact" aria-label="Contact">
+      <div class="card glass card-rose contact-card reveal">
         <h3>Let's Connect</h3>
-        <p style="margin-bottom: 1.5rem;">
-          I’m open to internships, projects, and collaborations.
-        </p>
+        <p>I'm open to internships, projects, and collaborations.</p>
         <a class="btn btn-primary" href="mailto:amanom2727@gmail.com">amanom2727@gmail.com</a>
       </div>
     </section>
+
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="socials">
-        <a href="#" class="social-link" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20"
-            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
+        <a href="#" class="social-link" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path
               d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 15.13V19z">
             </path>
-          </svg></a>
-        <a href="#" class="social-link" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20"
-            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
             <rect x="2" y="9" width="4" height="12"></rect>
             <circle cx="4" cy="4" r="2"></circle>
-          </svg></a>
-        <a href="tel:+918408842575" class="social-link" aria-label="Phone"><svg xmlns="http://www.w3.org/2000/svg"
-            width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+          </svg>
+        </a>
+        <a href="tel:+918408842575" class="social-link" aria-label="Phone">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path
               d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
             </path>
-          </svg></a>
+          </svg>
+        </a>
       </div>
-      <p style="margin-top: 1rem; color: var(--muted);">
-        © <span id="year"></span> Aman Jha. Crafted with Liquid Glass.
+      <p class="footer-caption">
+        &copy; <span id="year"></span> Aman Jha &mdash; Material You &times; Glass
       </p>
     </div>
   </footer>
 
   <script>
+    // ── Year ─────────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script>
+
+    // ── Header shadow on scroll ───────────────────
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // ── Scroll reveal (slide up from bottom) ──────
+    const revealEls = document.querySelectorAll('.reveal');
+    const staggerGroups = document.querySelectorAll('.reveal-stagger');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+    staggerGroups.forEach(el => observer.observe(el));
+
+    // ── Trigger hero elements immediately ─────────
+    setTimeout(() => {
+      document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+    }, 100);
+
+    // ── Cursor glow follower ──────────────────────
+    const glow = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    }, { passive: true });
+
+    // ── Service Worker ────────────────────────────
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
-          .then(() => console.log('Service Worker Registered'))
-          .catch(err => console.log('Service Worker Failed', err));
+          .then(() => console.log('SW Registered'))
+          .catch(err => console.log('SW Failed', err));
       });
     }
   </script>
