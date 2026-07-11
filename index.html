@@ -1009,8 +1009,10 @@
           rgba(168, 199, 250, .08) 0%,
           rgba(208, 188, 255, .04) 40%,
           transparent 70%);
+      left: 0;
+      top: 0;
       transform: translate(-50%, -50%);
-      transition: left 0.12s ease, top 0.12s ease;
+      transition: transform 0.12s ease;
       z-index: 0;
       mix-blend-mode: screen;
     }
@@ -1033,6 +1035,7 @@
       </div>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
@@ -1055,6 +1058,7 @@
         <div class="cta-row">
           <a class="btn btn-primary" href="#projects">View projects</a>
           <a class="btn btn-outlined" href="#contact">Get in touch</a>
+          <a class="btn btn-outlined" href="resume.pdf" download>Download Resume</a>
         </div>
       </div>
 
@@ -1064,7 +1068,7 @@
         </div>
         <div class="identity">
           <h2>Aman Jha</h2>
-          <p class="meta">Undergraduate &bull; AI&amp;DS &bull; Class of 2026</p>
+          <p class="meta">Undergraduate &bull; AI&amp;DS &bull; Class of 2028</p>
         </div>
       </aside>
     </section>
@@ -1103,6 +1107,10 @@
           <h4>IoT Based Smart Meter</h4>
           <p>A hardware-software integration project that monitors energy usage in real-time and transmits data
             wirelessly for remote tracking and analysis, enabling smarter energy consumption.</p>
+          <div style="margin-top: auto; padding-top: 1rem; display: flex; gap: 0.5rem;">
+            <a href="#" class="btn btn-outlined" style="height: 32px; padding: 0 1rem; font-size: 0.8rem;">GitHub</a>
+            <a href="#" class="btn btn-primary" style="height: 32px; padding: 0 1rem; font-size: 0.8rem;">Live Demo</a>
+          </div>
         </article>
 
         <article class="card glass card-purple project-card">
@@ -1115,6 +1123,10 @@
           <h4>Simple Regression Model</h4>
           <p>A foundational machine learning project implementing linear regression to predict continuous
             numerical outcomes from input datasets, demonstrating core predictive modelling concepts.</p>
+          <div style="margin-top: auto; padding-top: 1rem; display: flex; gap: 0.5rem;">
+            <a href="#" class="btn btn-outlined" style="height: 32px; padding: 0 1rem; font-size: 0.8rem;">GitHub</a>
+            <a href="#" class="btn btn-primary" style="height: 32px; padding: 0 1rem; font-size: 0.8rem;">Live Demo</a>
+          </div>
         </article>
 
         <article class="card glass card-teal project-card">
@@ -1127,6 +1139,10 @@
           <h4>Smart Medical Inventory</h4>
           <p>A digital management system for medical facilities to track stock levels, manage expiry dates, and
             automate reordering — ensuring efficient pharmaceutical supply chain management.</p>
+          <div style="margin-top: auto; padding-top: 1rem; display: flex; gap: 0.5rem;">
+            <a href="#" class="btn btn-outlined" style="height: 32px; padding: 0 1rem; font-size: 0.8rem;">GitHub</a>
+            <a href="#" class="btn btn-primary" style="height: 32px; padding: 0 1rem; font-size: 0.8rem;">Live Demo</a>
+          </div>
         </article>
 
       </div>
@@ -1150,6 +1166,41 @@
       </div>
     </section>
 
+    <!-- ── EXPERIENCE ──────────────────────────── -->
+    <section id="experience" aria-label="Experience">
+      <div class="section-head reveal">
+        <div class="section-pill pill-amber">Experience</div>
+        <h3>Professional Journey</h3>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item glass reveal">
+          <h4>Tantrata Solution Pvt Ltd</h4>
+          <p class="meta">Internship &bull; Jan - Feb 2026</p>
+          <div style="margin-top: 1rem; color: var(--on-surface-var); font-size: 0.95rem;">
+            <strong style="color: var(--on-surface);">Python Inventory Management System</strong>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6;">
+              <li>Engineered a backend inventory management system using Python, reducing manual data entry errors by
+                automating stock tracking and record-keeping workflows.</li>
+              <li>Implemented database logic to manage real-time inventory updates, ensuring data consistency across the
+                application.</li>
+            </ul>
+            <strong style="color: var(--on-surface);">Progressive Web App (PWA) Development</strong>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6;">
+              <li>Developed a responsive, mobile-first portfolio application as a PWA, optimizing performance and
+                enabling reliable offline access for users.</li>
+              <li>Utilized service workers and web manifest files to deliver an app-like user experience, significantly
+                improving page load times.</li>
+            </ul>
+            <strong style="color: var(--on-surface);">Data Analysis &amp; Visualization</strong>
+            <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.6;">
+              <li>Performed exploratory data analysis (EDA) on operational datasets, identifying key patterns that
+                provided actionable insights for process optimization.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── EDUCATION ──────────────────────────── -->
     <section id="education" aria-label="Education">
       <div class="section-head reveal">
@@ -1159,7 +1210,11 @@
       <div class="timeline">
         <div class="timeline-item glass reveal">
           <h4>Zeal College Of Engineering</h4>
-          <p class="meta">B.E. in Artificial Intelligence &amp; Data Science (AI&amp;DS)</p>
+          <p class="meta">B.Tech in Artificial Intelligence &amp; Data Science (AI&amp;DS)</p>
+        </div>
+        <div class="timeline-item glass reveal" style="transition-delay:0.1s">
+          <h4>Diploma in Electrical Engineering</h4>
+          <p class="meta">2022–2025</p>
         </div>
         <div class="timeline-item glass reveal" style="transition-delay:0.12s">
           <h4>Don Bosco High School</h4>
@@ -1183,7 +1238,7 @@
   <footer>
     <div class="container">
       <div class="socials">
-        <a href="#" class="social-link" aria-label="GitHub">
+        <a href="https://github.com/amanom2727" class="social-link" aria-label="GitHub">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path
@@ -1191,7 +1246,7 @@
             </path>
           </svg>
         </a>
-        <a href="#" class="social-link" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/amanom2727" class="social-link" aria-label="LinkedIn">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -1248,8 +1303,7 @@
     // ── Cursor glow follower ──────────────────────
     const glow = document.getElementById('cursor-glow');
     document.addEventListener('mousemove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
+      glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     }, { passive: true });
 
     // ── Service Worker ────────────────────────────
